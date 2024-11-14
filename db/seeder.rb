@@ -21,9 +21,9 @@ class Seeder
   end
 
   def self.populate_tables
-    password_hash = BCrypt::Password.create("123")
-    p "Storing hashed version of password to db. Clear text never saved. #{password_hash}"
-    db.execute('INSERT INTO users (username, password) VALUES (?, ?)', ["ola", password_hash])
+    password_hashed = BCrypt::Password.create("123")
+    p "Storing hashed version of password to db. Clear text never saved. #{password_hashed}"
+    db.execute('INSERT INTO users (username, password) VALUES (?, ?)', ["ola", password_hashed])
   end
 
   private

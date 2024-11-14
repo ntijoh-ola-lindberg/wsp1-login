@@ -46,6 +46,7 @@ class App < Sinatra::Base
 
     unless user
       p "/login : Invalid username."
+      status 401
       redirect '/loginfailed'
     end
 
@@ -55,12 +56,13 @@ class App < Sinatra::Base
     # Create a BCrypt object from the hashed password from db
     bcrypt_db_password = BCrypt::Password.new(db_password_hashed)
     # Check if the plain password matches the hashed password from db
-    if bcrypt_db_password.is_password?(request_plain_password)
+    if bcrypt_db_password == request_plain_password
       p "/login : Logged in -> redirecting to admin"
       session[:user_id] = db_id
       redirect '/admin'
     else
       p "/login : Invalid password."
+      status 401
       redirect '/loginfailed'
     end
 
