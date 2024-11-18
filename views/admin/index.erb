@@ -3,3 +3,12 @@
 
 <p>Du är inloggad som admin</p>
 
+<p>Testa att bcrypta ett lösenord</p>
+
+<p><code>password_hashed = BCrypt::Password.create("123")</code></p>
+
+<form action="/testpwcreate" method="POST">
+  <label>Plain password:
+    <input type="text" value="a-password" name="plainpassword" id="plainpassword" required></label>
+  <button type="submit">bcrypta</button>
+</form>

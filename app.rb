@@ -23,6 +23,12 @@ class App < Sinatra::Base
     end
   end
 
+  post '/testpwcreate' do
+    plain_password = params[:plainpassword]
+    password_hashed = BCrypt::Password.create(plain_password)
+    p password_hashed
+  end
+
   get '/admin' do
     if session[:user_id]
       erb(:"admin/index")
