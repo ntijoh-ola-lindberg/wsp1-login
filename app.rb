@@ -27,12 +27,14 @@ class App < Sinatra::Base
     if session[:user_id]
       erb(:"admin/index")
     else
-      redirect '/'
+      p "/admin : Access denied."
+      status 401
+      redirect '/unauthorized'
     end
   end
 
-  get '/loginfailed' do
-    erb(:loginfailed)
+  get '/unauthorized' do
+    erb(:unauthorized)
   end
 
   post '/login' do
@@ -47,7 +49,7 @@ class App < Sinatra::Base
     unless user
       p "/login : Invalid username."
       status 401
-      redirect '/loginfailed'
+      redirect '/unauthorized'
     end
 
     db_id = user["id"].to_i
@@ -63,7 +65,7 @@ class App < Sinatra::Base
     else
       p "/login : Invalid password."
       status 401
-      redirect '/loginfailed'
+      redirect '/unauthorized'
     end
 
   end
