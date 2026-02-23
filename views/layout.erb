@@ -7,18 +7,21 @@
     <link rel="stylesheet" type="text/css" href="/style.css?<%=Time.now.to_i%>">
 </head>
 <body>
-  <h1>Exempel på inloggning</h1>
-  <p>Routen <code>/admin</code> går bara att komma åt ifall du är inloggad.<br> Finns en användare i databasen: <code>ola</code> / <code>123</code></p>
-  <hr>
-    <nav>
-        <ul>
-            <li><a href="/">Logga in</a></li>
-            <li><a href="/logout">Logga ut</a></li>
-            <li><a href="/admin">Admin</a></li>
-        </ul>
-    </nav>
-    <hr>
-    <%= yield %>
-    <hr>
+  <h1>Inloggning, utloggning och användarhantering</h1>
+  <nav>
+      <ul>
+          <li><a href="/">Index</a></li>
+          <li><a href="/admin">Admin</a></li>
+
+          <li><a href="/login">Logga in</a></li>
+          <li>
+            <form class="delete" action="/logout" method="post">
+              <input type="submit" value="Logga ut">
+            </form>
+          </li>
+      </ul>
+  </nav>
+
+  <%= yield %>
 </body>
 </html>

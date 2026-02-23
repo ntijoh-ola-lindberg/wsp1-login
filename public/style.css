@@ -6,12 +6,13 @@ body {
   margin: 1em;
 }
 
-a {
-  color: #008080;
-}
-
 form {
   display: inline-block;
+}
+
+nav {
+  background-color: palegoldenrod;
+  padding: 0.5em;
 }
 
 nav ul {
@@ -25,10 +26,19 @@ nav ul li {
   margin-right: 0.5em;
 }
 
-nav ul li a {
+nav ul li a,
+nav input {
   text-decoration: none;
+  color: #008080;
+  background-color: cornsilk;
+  padding: 0.2em;
+
+  border: none;
+  font: inherit;
+  cursor: pointer;
 }
 
-nav ul li a:hover {
+nav ul li a:hover,
+nav input:hover {
   text-decoration: underline;
 }
