@@ -1,24 +1,13 @@
-# Webbserverprogramering 1 - Exempel på login
-Exempel på inloggning med sessions för kursen Webbserverprogrammering 1 på NTI Johanneberg
+# Arkitektur för användarhantering och inloggning
 
-Läs:
- * https://ntijoh.github.io/webbserverprogrammeringsboken/#_kakor_kryptering_och_sessioner
- * https://ntijoh.github.io/webbserverprogrammeringsboken/#_registrering_inloggning
+Detta dokument beskriver hur man strukturerar routes för att hantera användarkonton, inloggning och utloggning i en webbapplikation. För kursen Webbserverprogrammering 1 på NTI Johanneberg.
 
-## Lärandemål
-- todo
+Innan ni arbetar med exemplet här har ni sett en föreläsning. I Webbserverprogrammeringsboken finns teori och exempel om [Registrering och inloggning](https://ntijoh.github.io/webbserverprogrammeringsboken/#_registrering_inloggning) och [Kakor, kryptering och sessioner](https://ntijoh.github.io/webbserverprogrammeringsboken/#_kakor_kryptering_och_sessioner).
 
-## Installation
-
-1. `bundle install` | Installerar de biblotek (tex. SQLite) du behöver
-2. `rake` | Startar appen. Finns det ingen databas skapas en ny i `db/sqlite.db`
-3. `ctrl + c` | Stänger webbservern
-4. `rake seed` | Återställer databasen från seed-filen
-5. `rake kill` | Stänger av alla Ruby om du t.ex. har problem att få igång webbservern med felmeddelande ungefär som `Address already in use - bind(2) for 0.0.0.0:9292` 
-
-Använd verktyget `DB Browser for SQLite` för att titta på, arbeta fram och testa SQL-kod.
-
----
+## Mål med dokumentet
+* Öva på att se vilka routes som behövs för användarkonton.
+* Förstå **REST-standarden** med rätt Verb och Routes.
+* Förstå kopplingen mellan REST-standarden och databastabeller.
 
 ## Användare: RESTful routes
 Följande routes hanterar användarkonton, dvs. registrering, visning, ändring av profiler och borttagning av konto.
@@ -46,3 +35,13 @@ För inloggning går man oftast ifrån RESTful standarden för att öka tydlighe
 | **Create** | POST | `/login` | - | Jämför info med DB och sätter `session[:user_id]`. |
 | **Destroy** | POST | `/logout` | - | Loggar ut användaren. |
 | **Access Denied**| GET | `/access_denied` | `/access_denied.erb` | Visas vid fel lösenord eller saknad behörighet. |
+
+## Installation
+
+1. `bundle install` | Installerar de biblotek (tex. SQLite) du behöver
+2. `rake` | Startar appen. Finns det ingen databas skapas en ny i `db/sqlite.db`
+3. `ctrl + c` | Stänger webbservern
+4. `rake seed` | Återställer databasen från seed-filen
+5. `rake kill` | Stänger av alla Ruby om du t.ex. har problem att få igång webbservern med felmeddelande ungefär som `Address already in use - bind(2) for 0.0.0.0:9292` 
+
+Använd verktyget `DB Browser for SQLite` för att titta på, arbeta fram och testa SQL-kod.
