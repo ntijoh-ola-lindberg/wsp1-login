@@ -25,7 +25,7 @@ Alla routes måste inte finnas för alla resurser. Om du inte behöver en lista 
 | **Destroy** | POST | `/users/:id/delete` | - | Tar bort en användare. |
 
 ## Inloggning: RESTful routes
-En **Session** ses som en resurs som skapas när användaren loggar in och förstörs när användaren loggar ut. För inloggning används oftast bara följande routes:
+En **session** ses som en resurs som skapas när användaren loggar in och förstörs när användaren loggar ut. För inloggning används oftast bara följande routes:
 
 För inloggning går man oftast ifrån RESTful standarden för att öka tydligheten och använder följande routes. 
 
