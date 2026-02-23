@@ -42,3 +42,8 @@ nav ul li a:hover,
 nav input:hover {
   text-decoration: underline;
 }
+
+#login-info {
+  background-color: aquamarine;
+  padding: 0.5em;
+}

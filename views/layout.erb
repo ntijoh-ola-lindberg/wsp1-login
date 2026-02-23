@@ -7,18 +7,31 @@
     <link rel="stylesheet" type="text/css" href="/style.css?<%=Time.now.to_i%>">
 </head>
 <body>
+
+  <div id="login-info">
+  <% if @current_user %>
+    <span>Inloggad som: <%= @current_user['username'] %></span>
+  <% else %>
+    <span>Ej inloggad</span>
+  <% end %>
+  </div>
+
   <h1>Inloggning, utloggning och användarhantering</h1>
   <nav>
       <ul>
           <li><a href="/">Index</a></li>
           <li><a href="/admin">Admin</a></li>
 
-          <li><a href="/login">Logga in</a></li>
+          <% if @current_user %>
           <li>
             <form class="delete" action="/logout" method="post">
               <input type="submit" value="Logga ut">
             </form>
           </li>
+          <% else %>
+          <li><a href="/login">Logga in</a></li>
+          <li><a href="/users/new">Registrera</a>
+          <% end %>
       </ul>
   </nav>
 

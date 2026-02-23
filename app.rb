@@ -19,12 +19,15 @@ class App < Sinatra::Base
     set :session_secret, SecureRandom.hex(64)
   end
 
-  get '/' do
+  before do
     if session[:user_id]
-      erb(:"admin/index")
-    else
-      erb :index
+      @current_user = db.execute("SELECT * FROM users WHERE id = ?", session[:user_id]).first
+      ap @current_user
     end
+  end
+
+  get '/' do
+    erb(:index)
   end
 
   get '/admin' do
@@ -80,7 +83,11 @@ class App < Sinatra::Base
   post '/logout' do
     ap "Logging out"
     session.clear
-    erb(:logout)
+    redirect '/'
+  end
+
+  get '/users/new' do
+    erb(:"users/new")
   end
 
 end
